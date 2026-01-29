@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Checklist</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- WELCOME SCREEN -->
+  <section id="welcomeScreen" class="screen">
+    <div class="pixel-window">
+      <div class="win-topbar">
+        <div class="topbar-left"></div>
+
+        <div class="win-controls">
+          <button id="minBtn1" class="icon-btn" aria-label="Minimize">_</button>
+          <button id="closeBtn1" class="icon-btn" aria-label="Close">X</button>
+        </div>
+      </div>
+
+      <div class="welcome-body">
+        <div class="decor-line">♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥</div>
+
+        <div class="welcome-text">
+          <div class="welcome-title">Gentle</div>
+          <div class="welcome-sub">REMINDER:</div>
+          <div class="welcome-msg">Take care of yourself today</div>
+        </div>
+
+        <div class="welcome-cat">~(=^･ω･^=)~</div>
+
+        <button id="continueBtn" class="pixel-btn primary">Devam</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TODO SCREEN -->
+  <section id="todoScreen" class="screen hidden">
+    <div class="pixel-window">
+      <div class="win-topbar">
+        <div class="title">CHECK LIST</div>
+
+        <div class="win-controls">
+          <button id="minBtn2" class="icon-btn" aria-label="Minimize">_</button>
+          <button id="closeBtn2" class="icon-btn" aria-label="Close">X</button>
+        </div>
+      </div>
+
+      <div class="win-body">
+        <!-- Filter -->
+        <div class="panel">
+          <input id="filterInput" class="pixel-input" placeholder="Filter" />
+        </div>
+
+        <!-- Task list -->
+        <div class="panel list-wrap">
+          <ul id="taskList" class="task-list"></ul>
+        </div>
+
+        <!-- Add new -->
+        <div class="panel add-row">
+          <input id="newInput" class="pixel-input big" placeholder="new entry" maxlength="60" />
+          <button id="addBtn" class="pixel-btn">add</button>
+        </div>
+
+        <!-- Mascot lane -->
+        <div class="panel mascot-lane">
+          <img id="mascot" src="./assets/mascot.gif" alt="mascot">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

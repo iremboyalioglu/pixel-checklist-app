@@ -1,0 +1,323 @@
+@font-face{
+  font-family: "PixelFont";
+  src: url("./assets/fonts/PixelFont.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root{
+  --bg: #101010;
+
+  --borderDark: #3a2aa5;
+  --borderMid:  #6b57dd;
+  --borderLight:#c6b8ff;
+
+  --barTop:     #cdbfff;
+  --barBottom:  #b7a6ff;
+
+  --pagePink:   #ffc1db;
+  --panelPink:  #ffd3ea;
+  --softPink:   #ffe7f4;
+
+  --ink:        #4a2a86;
+  --inkSoft:    rgba(74,42,134,0.35);
+
+  --px: 4px;
+  --radius: 18px;
+
+  --font: "PixelFont", "Courier New", monospace;
+
+  --mascotSize: 48px; /* maskot küçük/ büyük: 32px / 48px / 64px */
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  height: 100vh;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  font-family: var(--font);
+  color: var(--ink);
+  user-select: none;
+
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.screen{ width: min(880px, 92vw); }
+.hidden{ display: none; }
+
+.pixel-window{
+  background: var(--borderLight);
+  border: var(--px) solid var(--borderDark);
+  border-radius: var(--radius);
+  box-shadow:
+    0 0 0 var(--px) var(--borderMid) inset,
+    0 18px 0 rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+
+.win-topbar{
+  height: 64px;
+  background: linear-gradient(var(--barTop), var(--barBottom));
+  border-bottom: var(--px) solid var(--borderDark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+
+  -webkit-app-region: drag;
+}
+
+.topbar-left{ width: 1px; height: 1px; }
+
+.title{
+  font-size: 40px;
+  letter-spacing: 2px;
+  color: var(--inkSoft);
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.35);
+}
+
+.win-controls{
+  display: flex;
+  gap: 10px;
+  -webkit-app-region: no-drag;
+}
+
+.icon-btn{
+  width: 44px;
+  height: 36px;
+  border: var(--px) solid var(--borderDark);
+  background: #ffe1f1;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 18px;
+  box-shadow: 0 0 0 var(--px) rgba(255,255,255,0.18) inset;
+
+  -webkit-app-region: no-drag;
+}
+.icon-btn:active{ transform: translateY(2px); }
+
+.win-body{
+  padding: 16px;
+  background: var(--pagePink);
+  display: grid;
+  gap: 14px;
+}
+
+.panel{
+  background: var(--panelPink);
+  border: var(--px) solid var(--borderDark);
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 0 0 var(--px) rgba(255,255,255,0.14) inset;
+}
+
+.pixel-input{
+  width: 100%;
+  border: var(--px) solid var(--borderMid);
+  border-radius: 14px;
+  padding: 14px 14px;
+  font-size: 26px;
+  background: var(--softPink);
+  outline: none;
+  color: var(--ink);
+
+  -webkit-app-region: no-drag;
+}
+.pixel-input:focus{
+  border-color: var(--borderDark);
+  background: #fff1f9;
+}
+.pixel-input.big{ font-size: 28px; }
+
+/* placeholder da pixel font olsun */
+.pixel-input::placeholder{
+  font-family: var(--font);
+  letter-spacing: 1px;
+  color: rgba(74, 42, 134, 0.55);
+  opacity: 1;
+  -webkit-font-smoothing: none;
+}
+
+.pixel-btn{
+  border: var(--px) solid var(--borderDark);
+  border-radius: 14px;
+  background: #ffe1f1;
+  font-size: 26px;
+  padding: 14px 14px;
+  cursor: pointer;
+  box-shadow: 0 0 0 var(--px) rgba(255,255,255,0.14) inset;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  -webkit-app-region: no-drag;
+}
+.pixel-btn:active{ transform: translateY(2px); }
+
+.pixel-btn.primary{
+  background: #fff1fb;
+  width: 240px;
+  justify-self: center;
+}
+
+.list-wrap{ padding: 10px; }
+
+.task-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 280px;
+  overflow: auto;
+  display: grid;
+  gap: 12px;
+}
+
+.task{
+  background: var(--softPink);
+  border: var(--px) solid var(--borderMid);
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox{
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: var(--px) solid var(--borderMid);
+  border-radius: 12px;
+  cursor: pointer;
+
+  -webkit-app-region: no-drag;
+}
+.checkbox.checked{
+  background: rgba(107, 87, 221, 0.12);
+  position: relative;
+}
+.checkbox.checked::after{
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  color: var(--ink);
+}
+
+.task-text{
+  font-size: 26px;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.35);
+}
+.task.done .task-text{
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+.del-btn{
+  width: 44px;
+  height: 44px;
+  border: var(--px) solid var(--borderMid);
+  border-radius: 12px;
+  background: #ffe1f1;
+  cursor: pointer;
+  font-size: 26px;
+  color: var(--ink);
+
+  -webkit-app-region: no-drag;
+}
+.del-btn:active{ transform: translateY(2px); }
+
+.add-row{
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 12px;
+  align-items: center;
+}
+
+/* WELCOME */
+.welcome-body{
+  padding: 26px 16px 28px;
+  background: var(--pagePink);
+  display: grid;
+  gap: 18px;
+  text-align: center;
+}
+
+.decor-line{
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: rgba(74,42,134,0.35);
+}
+
+.welcome-title{
+  font-size: 40px;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.12);
+  letter-spacing: 2px;
+}
+.welcome-sub{
+  font-size: 22px;
+  color: rgba(255,255,255,0.95);
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+.welcome-msg{
+  font-size: 20px;
+  color: rgba(255,255,255,0.95);
+  margin-top: 10px;
+}
+.welcome-cat{
+  font-size: 28px;
+  color: rgba(74,42,134,0.55);
+}
+
+button, input{ -webkit-app-region: no-drag; }
+
+/* ===== Mascot Lane ===== */
+.mascot-lane{
+  height: 70px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+/* Mascot görüntüsü */
+#mascot{
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  width: var(--mascotSize);
+  height: var(--mascotSize);
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+/* Mascot lane */
+.mascot-lane{
+  height: 90px;          /* bar yüksekliği (istersen artır/azalt) */
+  position: relative;
+  overflow: hidden;       /* GIF bar dışına taşarsa kırp */
+  display: flex;
+  align-items: flex-end;  /* alta yasla */
+  justify-content: center;
+  padding: 6px 10px;
+}
+
+/* Geniş gif: bar içinde sığdır */
+#mascot{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* kırpma yok, sığdır */
+  object-position: center bottom;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
