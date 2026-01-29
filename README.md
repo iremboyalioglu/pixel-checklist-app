@@ -18,12 +18,7 @@ Designed to feel soft, playful, and distraction-free — with a welcoming start 
 
 ---
 
-## Screens (optional)
 
-_Add screenshots here for portfolio impact:_
-
-- `assets/screenshots/welcome.png`
-- `assets/screenshots/todo.png`
 
 ```text
 ![Welcome](assets/screenshots/welcome.png)
