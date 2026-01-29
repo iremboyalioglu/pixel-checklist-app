@@ -19,8 +19,6 @@ function createWindow() {
   win.setMenuBarVisibility(false);
   win.loadFile("index.html");
 
-  // Debug lazım olursa aç:
-  // win.webContents.openDevTools({ mode: "detach" });
 }
 
 ipcMain.on("window:minimize", (event) => {

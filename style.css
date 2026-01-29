@@ -303,20 +303,20 @@ button, input{ -webkit-app-region: no-drag; }
 
 /* Mascot lane */
 .mascot-lane{
-  height: 90px;          /* bar yüksekliği (istersen artır/azalt) */
+  height: 90px;
   position: relative;
-  overflow: hidden;       /* GIF bar dışına taşarsa kırp */
+  overflow: hidden;
   display: flex;
-  align-items: flex-end;  /* alta yasla */
+  align-items: flex-end;
   justify-content: center;
   padding: 6px 10px;
 }
 
-/* Geniş gif: bar içinde sığdır */
+
 #mascot{
   width: 100%;
   height: 100%;
-  object-fit: contain;    /* kırpma yok, sığdır */
+  object-fit: contain;
   object-position: center bottom;
   image-rendering: pixelated;
   pointer-events: none;

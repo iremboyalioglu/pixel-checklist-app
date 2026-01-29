@@ -22,7 +22,7 @@ continueBtn.addEventListener("click", () => {
   welcomeScreen.classList.add("hidden");
   todoScreen.classList.remove("hidden");
 
-  // Maskotu sadece todo ekranı açılınca başlat
+
   if (!mascotStarted) {
     mascotStarted = true;
     
