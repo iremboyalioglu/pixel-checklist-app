@@ -42,18 +42,9 @@ pixel-checklist-app/
   index.html
   style.css
   renderer.js
-  package.json
-Mascot
-The mascot is loaded from:
+  package.json ```
 
-assets/mascot.gif
-and displayed in the bottom lane on the checklist screen.
+---
 
-Pixel Font (Optional)
-For a stronger pixel feel, the UI supports a font at:
-
-assets/fonts/PixelFont.ttf
-(If you use a different name, update the @font-face path in style.css.)
-
-License
+## License
 MIT
